@@ -1,6 +1,6 @@
 'use strict';
 
-// 1. База данных картин (вынесена наверх для удобства)
+// 1. База данных картин 
 const artCollection = {
   france: [
     { artist: "Марсель Руссо", title: "Охота Амура", price: "14 500 руб", material: "Холст, масло (50×80)" },
@@ -42,7 +42,7 @@ const renderGallery = () => {
 
     const artwork = artCollection[regionKey][itemIndex];
     
-    // Формируем путь к картинке. +1 нужно, так как картинки называются tabs-1...tabs-6, а индекс идет от 0
+    // Формируем путь к картинке
     const imageSource = `assets/${regionKey}/tabs-${itemIndex + 1}.jpg`;
 
     // Заполняем HTML
@@ -57,7 +57,6 @@ const renderGallery = () => {
   }
 };
 
-// 3. Логика переключения табов
 const initTabs = () => {
   const tabLinks = document.querySelectorAll('.tabs__item');
   const tabContents = document.querySelectorAll('.tabs__content');
@@ -96,11 +95,11 @@ const initMobileMenu = () => {
   }
 };
 
-// 5. Логика ссылок в футере (переключение табов при клике снизу)
+// 5. Логика ссылок в футере 
 const initFooterLinks = () => {
   const footerLinks = document.querySelectorAll('.footer__menu-link');
 
-  // Словарь соответствия: Страна -> ID таба
+  // Словарь соответствия: Страна -> ID 
   const tabMap = {
     'france': '#tab-1',
     'germany': '#tab-2',
@@ -113,7 +112,7 @@ const initFooterLinks = () => {
       const region = link.dataset.region;
       const targetTabId = tabMap[region];
 
-      // Имитируем клик по нужному табу сверху
+  
       const tabToClick = document.querySelector(`.tabs__item[href="${targetTabId}"]`);
       if (tabToClick) {
         tabToClick.click();
@@ -133,4 +132,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initMobileMenu();
   initFooterLinks();
+
 });
